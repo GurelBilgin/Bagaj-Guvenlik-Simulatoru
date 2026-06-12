@@ -144,6 +144,24 @@ EXE oluştururken aynı ikonun EXE dosyasına işlenmesi için PyInstaller komut
 ```
 
 ---
+---
+## 🚀 Yayınlanan Sürüm
+
+Programın Windows için hazırlanmış çalıştırılabilir EXE dosyası GitHub Releases bölümünde paylaşılmıştır.
+
+Python kurmak istemeyen kullanıcılar, Releases sayfasından son sürümü indirerek programı doğrudan çalıştırabilir.
+
+### 📥 İndirme
+
+1. GitHub deposunda sağ taraftaki `Releases` bölümüne girin.
+2. En güncel sürümü açın.
+3. `BagajGuvenlikSimulatoru.exe` dosyasını indirin.
+4. EXE dosyasına çift tıklayarak programı çalıştırın.
+
+> Not: Kaynak koddan çalıştırmak isteyen kullanıcılar `python main.py` komutunu kullanabilir.
+---
+
+---
 
 ## ▶️ Programı Çalıştırma
 
@@ -155,7 +173,6 @@ Proje klasöründe terminal veya CMD açıp şu komutu çalıştırın:
 python main.py
 ```
 
----
 
 ## 📦 EXE Oluşturma
 
