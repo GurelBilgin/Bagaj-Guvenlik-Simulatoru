@@ -2,7 +2,7 @@
 
 Bu proje, bagaj güvenlik kontrol sürecini veri yapıları kullanarak simüle eden bir Python/Tkinter uygulamasıdır. Uygulamada yolcular sırayla güvenlik kontrolüne alınır, bagaj içerikleri stack mantığıyla taranır ve riskli yolcular kara listeye bağlı liste yapısıyla eklenir.
 
-Programda X-ray dedektör animasyonu, konveyör bant görünümü, temiz/riskli geçiş sesleri, kara liste kontrolü ve gün sonu raporlama sistemi bulunmaktadır.
+Programda güvenlik dedektörü animasyonu, konveyör bant görünümü, temiz/riskli geçiş sesleri, kara liste kontrolü ve gün sonu raporlama sistemi bulunmaktadır.
 
 ---
 
@@ -10,29 +10,29 @@ Programda X-ray dedektör animasyonu, konveyör bant görünümü, temiz/riskli 
 
 Bu uygulamanın amacı, temel veri yapılarının gerçek hayata benzer bir senaryo üzerinde nasıl kullanılabileceğini göstermektir.
 
-Projede özellikle şu veri yapıları kullanılmıştır:
+Bagaj güvenlik kontrolü senaryosu üzerinden yolcu kuyruğu, bagaj taraması ve kara liste takibi görsel bir arayüzle simüle edilmiştir.
+
+Projede kullanılan temel veri yapıları:
 
 * Queue
 * Stack
 * Linked List
 
-Bagaj güvenlik kontrolü senaryosu üzerinden yolcu kuyruğu, bagaj taraması ve kara liste takibi görsel bir arayüzle simüle edilmiştir.
-
 ---
 
 ## 🧠 Kullanılan Veri Yapıları
 
-### Queue / deque
+### 🔁 Queue / deque
 
-Yolcular güvenlik kontrolüne sırayla alınır. İlk gelen yolcu ilk kontrol edilir.
+Yolcular güvenlik kontrolüne sırayla alınır. İlk gelen yolcu ilk kontrol edilir. Bu yapı, güvenlik noktasındaki yolcu sırasını temsil eder.
 
-### Stack / list
+### 📚 Stack / list
 
-Bagajdaki eşyalar LIFO mantığıyla taranır. Son eklenen eşya ilk kontrol edilir.
+Bagajdaki eşyalar LIFO mantığıyla taranır. Son eklenen eşya ilk kontrol edilir. Bu yapı, bagaj içerisindeki eşyaların tarama sürecini temsil eder.
 
-### Linked List
+### 🔗 Linked List
 
-Kara listedeki yolcu ID kayıtları bağlı liste yapısıyla tutulur.
+Kara listedeki yolcu ID kayıtları bağlı liste yapısıyla tutulur. Riskli yolcular sisteme eklenir ve sonraki kontrollerde bu liste üzerinden takip edilir.
 
 ---
 
@@ -41,9 +41,10 @@ Kara listedeki yolcu ID kayıtları bağlı liste yapısıyla tutulur.
 * Rastgele yolcu üretme
 * Demo veri yükleme
 * Temiz, tehlikeli ve kara listedeki yolcuları simüle etme
-* X-ray dedektör ve konveyör bant animasyonu
+* Güvenlik dedektörü ve konveyör bant animasyonu
 * Bagaj dedektörden geçerken eşya içeriğini görsel olarak gösterme
-* Yasaklı eşyaları kırmızı, temiz eşyaları yeşil/mavi tonlarında gösterme
+* Yasaklı eşyaları kırmızı renkle vurgulama
+* Temiz eşyaları yeşil/mavi tonlarında gösterme
 * Temiz geçişte normal ses çalma
 * Yasaklı eşya veya kara liste durumunda alarm sesi çalma
 * Kara listeye otomatik yolcu ekleme
@@ -75,17 +76,17 @@ Varsayılan yasaklı eşyalar:
 
 Program açıldığında ekranı dolduracak şekilde başlar. Pencere moduna alındığında arayüz mümkün olduğu kadar yeniden ölçeklenir. Pencere çok daraltılırsa panellerin birbirine girmemesi için kaydırma sistemi devreye girer.
 
-Kısayollar:
+### ⌨️ Kısayollar
 
 * `F11`: Tam ekran modunu açar/kapatır.
 * `Esc`: Tam ekrandan çıkar.
 
-Kullanım adımları:
+### ▶️ Kullanım Adımları
 
 1. `Demo Veri Yükle` butonuna basın.
 2. `Simülasyonu Başlat` butonuna basın.
 3. Yolcular sırayla güvenlik kontrolünden geçer.
-4. Bagajlar X-ray dedektör animasyonu ile taranır.
+4. Bagajlar dedektör animasyonu ile taranır.
 5. Yasaklı eşya veya kara liste durumunda alarm sonucu gösterilir.
 6. Simülasyon bitince `Raporu Göster` ile gün sonu raporu görüntülenebilir.
 
@@ -108,10 +109,10 @@ Bagaj_Guvenlik_Simulatoru/
 │   └── sounds/
 │       ├── normal.wav
 │       └── alarm.wav
-├── reports/
 ├── build_exe.bat
 ├── build_exe_debug.bat
 ├── EXE_OLUSTURMA_NOTLARI.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -144,7 +145,7 @@ EXE oluştururken aynı ikonun EXE dosyasına işlenmesi için PyInstaller komut
 
 ---
 
-## ▶️ Çalıştırma
+## ▶️ Programı Çalıştırma
 
 Python 3 yüklü olmalıdır.
 
@@ -170,7 +171,7 @@ dist\BagajGuvenlikSimulatoru.exe
 Manuel EXE oluşturmak için:
 
 ```bat
-python -m PyInstaller --noconfirm --clean --onefile --windowed --name "BagajGuvenlikSimulatoru" --icon "assets\icon.ico" --add-data "assets;assets" --add-data "reports;reports" main.py
+python -m PyInstaller --noconfirm --clean --onefile --windowed --name "BagajGuvenlikSimulatoru" --icon "assets\icon.ico" --add-data "assets;assets" main.py
 ```
 
 Program açılmazsa hata mesajını görmek için `build_exe_debug.bat` dosyası kullanılabilir.
@@ -200,11 +201,11 @@ Raporda şu bilgiler yer alır:
 ## ⚙️ Teknik Notlar
 
 * Arayüz Python Tkinter ile geliştirilmiştir.
-* X-ray animasyonu Tkinter Canvas ile çizilmiştir.
+* Dedektör animasyonu Tkinter Canvas ile çizilmiştir.
 * Harici görsel dosyasına ihtiyaç duymadan dedektör, konveyör bant ve bagaj animasyonu oluşturulur.
 * `winsound` bağımlılığı güvenli hale getirilmiştir.
 * Windows dışındaki sistemlerde ses sistemi hata vermeden devre dışı kalabilir.
-* `__pycache__`, `build`, `dist` ve `.spec` dosyaları GitHub deposuna eklenmemelidir.
+* `__pycache__`, `build`, `dist`, `.spec` ve `.exe` dosyaları GitHub deposuna eklenmemelidir.
 
 ---
 
