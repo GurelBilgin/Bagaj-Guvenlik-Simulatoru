@@ -1,0 +1,17 @@
+BAGAJ GÜVENLİK SİMÜLATÖRÜ - EXE OLUŞTURMA
+
+1) Bu klasörü Windows bilgisayarda aç.
+2) build_exe.bat dosyasına çift tıkla.
+3) İşlem bitince EXE şu klasörde oluşur:
+
+   dist\BagajGuvenlikSimulatoru.exe
+
+Notlar:
+- İlk çalıştırmada PyInstaller kurulu değilse otomatik kurulur.
+- EXE ikon olarak assets\icon.ico dosyasını kullanır.
+- assets klasörü EXE içine dahil edilir. Bu sayede ikon ve ses dosyaları çalışır.
+- Program açılmazsa build_exe_debug.bat dosyasını çalıştır. Bu sürüm konsol penceresiyle açılır ve hatayı gösterir.
+- Windows EXE, Windows bilgisayarda oluşturulmalıdır.
+
+Manuel komut:
+python -m PyInstaller --noconfirm --clean --onefile --windowed --name "BagajGuvenlikSimulatoru" --icon "assets\icon.ico" --add-data "assets;assets" --add-data "reports;reports" main.py
