@@ -144,7 +144,7 @@ EXE oluştururken aynı ikonun EXE dosyasına işlenmesi için PyInstaller komut
 ```
 
 ---
----
+
 ## 🚀 Yayınlanan Sürüm
 
 Programın Windows için hazırlanmış çalıştırılabilir EXE dosyası GitHub Releases bölümünde paylaşılmıştır.
@@ -159,7 +159,6 @@ Python kurmak istemeyen kullanıcılar, Releases sayfasından son sürümü indi
 4. EXE dosyasına çift tıklayarak programı çalıştırın.
 
 > Not: Kaynak koddan çalıştırmak isteyen kullanıcılar `python main.py` komutunu kullanabilir.
----
 
 ---
 
@@ -173,6 +172,7 @@ Proje klasöründe terminal veya CMD açıp şu komutu çalıştırın:
 python main.py
 ```
 
+---
 
 ## 📦 EXE Oluşturma
 
