@@ -1,4 +1,4 @@
-"""Tkinter arayüzü ve X-ray dedektör animasyonu."""
+"""Tkinter arayüzü ve güvenlik dedektörü animasyonu."""
 
 from __future__ import annotations
 
@@ -178,7 +178,7 @@ class BagajGuvenlikApp(tk.Tk):
         ttk.Label(header, text="Bagaj Güvenlik Simülatörü", style="Header.TLabel").grid(row=0, column=0, sticky="w")
         ttk.Label(
             header,
-            text="Queue + Stack + Linked List veri yapılarını X-ray dedektör animasyonu ile gösterir. F11: gerçek tam ekran, Esc: çıkış.",
+            text="Queue + Stack + Linked List veri yapılarını güvenlik dedektörü animasyonu ile gösterir. F11: gerçek tam ekran, Esc: çıkış.",
             style="Sub.TLabel",
         ).grid(row=1, column=0, sticky="w", pady=(2, 0))
 
@@ -224,8 +224,8 @@ class BagajGuvenlikApp(tk.Tk):
         queue_scroll.grid(row=0, column=1, sticky="ns")
         self.queue_panel.configure(yscrollcommand=queue_scroll.set)
 
-        # Üst orta: X-ray animasyonu
-        xray_frame = ttk.LabelFrame(ana_frame, text="X-ray Dedektör ve Konveyör Bant", padding=8)
+        # Üst orta: Dedektör animasyonu
+        xray_frame = ttk.LabelFrame(ana_frame, text="Dedektör ve Konveyör Bant", padding=8)
         xray_frame.grid(row=0, column=1, padx=6, pady=6, sticky="nsew")
         xray_frame.grid_columnconfigure(0, weight=1)
         xray_frame.grid_rowconfigure(0, weight=0)
@@ -331,16 +331,16 @@ class BagajGuvenlikApp(tk.Tk):
 
         self.aciklama_label = ttk.Label(
             ana_frame,
-            text="Renkler: kırmızı = yasaklı eşya/alarm, turuncu = kara liste, yeşil = temiz geçiş. Bagaj X-ray tünelinden geçerken içindeki eşyalar görsel olarak gösterilir.",
+            text="Renkler: kırmızı = yasaklı eşya/alarm, turuncu = kara liste, yeşil = temiz geçiş. Bagaj dedektör tünelinden geçerken içindeki eşyalar görsel olarak gösterilir.",
             style="Sub.TLabel",
         )
         self.aciklama_label.grid(row=4, column=0, columnspan=3, padx=8, pady=(0, 4), sticky="ew")
 
     # ------------------------------------------------------------------
-    # X-ray Canvas çizimleri
+    # Dedektör Canvas çizimleri
     # ------------------------------------------------------------------
     def _xray_canvas_boyut_degisti(self, event: tk.Event) -> None:
-        """Canvas genişliği değişince X-ray sahnesini yeniden çizer.
+        """Canvas genişliği değişince dedektör sahnesini yeniden çizer.
 
         Önceki sürümde çizim koordinatları sabit kaldığı için pencere tam ekrana
         alındığında dedektör görüntüsü sol tarafta küçük kalıyordu. Bu yöntem,
@@ -362,7 +362,7 @@ class BagajGuvenlikApp(tk.Tk):
 
         # Arka plan
         self.xray_canvas.create_rectangle(0, 0, w, h, fill="#0b1220", outline="")
-        self.xray_canvas.create_text(18, 18, text="X-RAY BAGAJ TARAMA SİSTEMİ", anchor="w", fill="#e5e7eb", font=("Arial", 13, "bold"))
+        self.xray_canvas.create_text(18, 18, text="BAGAJ TARAMA SİSTEMİ", anchor="w", fill="#e5e7eb", font=("Arial", 13, "bold"))
         self.xray_canvas.create_text(w - 18, 18, text="CANLI SİMÜLASYON", anchor="e", fill="#38bdf8", font=("Arial", 10, "bold"))
 
         # Konveyör bant
@@ -506,7 +506,7 @@ class BagajGuvenlikApp(tk.Tk):
 
         # Tünele girince içerik ve tarama çizgileri görünür.
         if self.detector_x1 - 20 <= x + 42 <= self.detector_x2 + 20:
-            self.durum_label.config(text="X-ray taraması yapılıyor...")
+            self.durum_label.config(text="Güvenlik taraması yapılıyor...")
             # Işınlar ve içerik bir kez çizilip sonra yenilenir.
             for item in self._dinamik_canvas_items:
                 self.xray_canvas.delete(item)
