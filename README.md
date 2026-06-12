@@ -1,62 +1,97 @@
-# Bagaj Güvenlik Simülatörü
+# 🧳 Bagaj Güvenlik Simülatörü
 
 Bu proje, bagaj güvenlik kontrol sürecini veri yapıları kullanarak simüle eden bir Python/Tkinter uygulamasıdır. Uygulamada yolcular sırayla güvenlik kontrolüne alınır, bagaj içerikleri stack mantığıyla taranır ve riskli yolcular kara listeye bağlı liste yapısıyla eklenir.
 
-## Kullanılan veri yapıları
+Programda X-ray dedektör animasyonu, konveyör bant görünümü, temiz/riskli geçiş sesleri, kara liste kontrolü ve gün sonu raporlama sistemi bulunmaktadır.
 
-- **Queue / deque:** Yolcular sırayla güvenlik kontrolüne alınır.
-- **Stack / list:** Bagajdaki eşyalar LIFO mantığıyla taranır.
-- **Linked List:** Kara listedeki yolcu ID'leri tutulur.
+---
 
-## Özellikler
+## 🎯 Proje Amacı
 
-- Rastgele yolcu üretme
-- Demo veri yükleme
-- Temiz, tehlikeli ve kara listedeki yolcuları simüle etme
-- X-ray dedektör ve konveyör bant animasyonu
-- Bagaj dedektörden geçerken eşya içeriğini görsel olarak gösterme
-- Yasaklı eşyaları kırmızı, temiz eşyaları yeşil/mavi tonlarında gösterme
-- Temiz geçişte normal ses, yasaklı eşya/kara listede alarm sesi çalma
-- Yasaklı eşya veya kara liste durumunda alarm sonucu üretme
-- Kara listeye otomatik ekleme
-- Önceden kara listede olan yolcuları yakalama
-- Uygulama içinde estetik gün sonu raporu görüntüleme
-- İstenirse TXT rapor kaydetme
-- Temiz geçiş oranı ve alarm oranı hesaplama
-- Programı açılışta otomatik büyütülmüş/tam ekran pencere olarak başlatma
-- Pencere moduna alınca arayüzü kaydırılabilir ve responsive düzende koruma
-- Tam ekran kullanımda X-ray sahnesini mevcut pencere genişliğine göre ortalama
-- Özel pencere/EXE ikonu desteği
+Bu uygulamanın amacı, temel veri yapılarının gerçek hayata benzer bir senaryo üzerinde nasıl kullanılabileceğini göstermektir.
 
-## Yasaklı eşyalar
+Projede özellikle şu veri yapıları kullanılmıştır:
 
-Yasaklı eşyalar `constants.py` dosyasında tek merkezden yönetilir:
+* Queue
+* Stack
+* Linked List
 
-- bıçak
-- silah
-- patlayıcı
-- aerosol
-- yanıcı madde
+Bagaj güvenlik kontrolü senaryosu üzerinden yolcu kuyruğu, bagaj taraması ve kara liste takibi görsel bir arayüzle simüle edilmiştir.
 
-## Çalıştırma
+---
 
-Python 3 yüklü olmalıdır. Tkinter çoğu Python kurulumuyla birlikte gelir.
+## 🧠 Kullanılan Veri Yapıları
 
-```bash
-python main.py
-```
+### Queue / deque
 
-## Kullanım
+Yolcular güvenlik kontrolüne sırayla alınır. İlk gelen yolcu ilk kontrol edilir.
 
-Program açılışta ekranı dolduracak şekilde başlar. Pencere moduna aldığınızda arayüz mümkün olduğu kadar yeniden ölçeklenir; pencere çok daraltılırsa panellerin birbirine girmemesi için yatay/dikey kaydırma çubukları devreye girer. F11 gerçek tam ekran modunu açıp kapatır, Esc gerçek tam ekrandan çıkar.
+### Stack / list
+
+Bagajdaki eşyalar LIFO mantığıyla taranır. Son eklenen eşya ilk kontrol edilir.
+
+### Linked List
+
+Kara listedeki yolcu ID kayıtları bağlı liste yapısıyla tutulur.
+
+---
+
+## ✨ Özellikler
+
+* Rastgele yolcu üretme
+* Demo veri yükleme
+* Temiz, tehlikeli ve kara listedeki yolcuları simüle etme
+* X-ray dedektör ve konveyör bant animasyonu
+* Bagaj dedektörden geçerken eşya içeriğini görsel olarak gösterme
+* Yasaklı eşyaları kırmızı, temiz eşyaları yeşil/mavi tonlarında gösterme
+* Temiz geçişte normal ses çalma
+* Yasaklı eşya veya kara liste durumunda alarm sesi çalma
+* Kara listeye otomatik yolcu ekleme
+* Önceden kara listede olan yolcuları yakalama
+* Uygulama içinde gün sonu raporu görüntüleme
+* İstenirse TXT rapor kaydetme
+* Temiz geçiş oranı ve alarm oranı hesaplama
+* Açılışta ekranı dolduran arayüz
+* Pencere küçültülünce kaydırılabilir responsive yapı
+* Özel pencere ve EXE ikonu desteği
+
+---
+
+## 🚫 Yasaklı Eşyalar
+
+Yasaklı eşyalar `constants.py` dosyasında tek merkezden yönetilir.
+
+Varsayılan yasaklı eşyalar:
+
+* bıçak
+* silah
+* patlayıcı
+* aerosol
+* yanıcı madde
+
+---
+
+## 🖥️ Ekran ve Kullanım
+
+Program açıldığında ekranı dolduracak şekilde başlar. Pencere moduna alındığında arayüz mümkün olduğu kadar yeniden ölçeklenir. Pencere çok daraltılırsa panellerin birbirine girmemesi için kaydırma sistemi devreye girer.
+
+Kısayollar:
+
+* `F11`: Tam ekran modunu açar/kapatır.
+* `Esc`: Tam ekrandan çıkar.
+
+Kullanım adımları:
 
 1. `Demo Veri Yükle` butonuna basın.
 2. `Simülasyonu Başlat` butonuna basın.
-3. Yolcular sırayla işlenirken bagajlar X-ray dedektöründen geçer.
-4. Yasaklı eşya veya kara liste durumunda alarm sonucu gösterilir.
-5. Simülasyon bitince `Raporu Göster` ile uygulama içi raporu açabilir veya `TXT Rapor Kaydet` ile dosyaya aktarabilirsiniz.
+3. Yolcular sırayla güvenlik kontrolünden geçer.
+4. Bagajlar X-ray dedektör animasyonu ile taranır.
+5. Yasaklı eşya veya kara liste durumunda alarm sonucu gösterilir.
+6. Simülasyon bitince `Raporu Göster` ile gün sonu raporu görüntülenebilir.
 
-## Dosya yapısı
+---
+
+## 📁 Dosya Yapısı
 
 ```text
 Bagaj_Guvenlik_Simulatoru/
@@ -73,62 +108,108 @@ Bagaj_Guvenlik_Simulatoru/
 │   └── sounds/
 │       ├── normal.wav
 │       └── alarm.wav
-├── README.md
-└── reports/
+├── reports/
+├── build_exe.bat
+├── build_exe_debug.bat
+├── EXE_OLUSTURMA_NOTLARI.txt
+└── README.md
 ```
 
-## Pencere ve EXE ikonu
+---
 
-Programın pencere ikonu `assets/icon.ico` dosyasından alınır. Windows dışındaki bazı ortamlarda daha uyumlu görünmesi için `assets/icon.png` dosyası da yedek olarak eklenmiştir.
+## 🔊 Ses Sistemi
 
-EXE üretirken aynı ikonun EXE dosyasına da işlenmesi için PyInstaller komutuna şu bölüm eklenmelidir:
+Program iki farklı ses kullanır:
 
-```bash
+* `assets/sounds/normal.wav`: Temiz geçiş sesi
+* `assets/sounds/alarm.wav`: Yasaklı eşya, kara liste veya riskli durum sesi
+
+Kendi ses dosyalarınızı kullanmak isterseniz aynı klasördeki dosyaları aynı isimlerle değiştirebilirsiniz.
+
+Ses dosyaları bulunamazsa program Windows üzerinde yedek olarak basit bip sesiyle çalışır.
+
+---
+
+## 🖼️ Pencere ve EXE İkonu
+
+Programın pencere ikonu `assets/icon.ico` dosyasından alınır.
+
+Ayrıca `assets/icon.png` dosyası ikonun görsel kaynak/yedek hali olarak projede tutulmuştur.
+
+EXE oluştururken aynı ikonun EXE dosyasına işlenmesi için PyInstaller komutunda şu bölüm kullanılır:
+
+```bat
 --icon "assets\icon.ico"
 ```
 
-Örnek final komut:
+---
 
-```bash
-pyinstaller --noconfirm --clean --onefile --windowed --name "BagajGuvenlikSimulatoru" --icon "assets\icon.ico" --add-data "assets;assets" main.py
+## ▶️ Çalıştırma
+
+Python 3 yüklü olmalıdır.
+
+Proje klasöründe terminal veya CMD açıp şu komutu çalıştırın:
+
+```bat
+python main.py
 ```
 
-## Ses dosyaları
+---
 
-Program iki ses dosyası kullanır:
-
-- `assets/sounds/normal.wav`: temiz geçiş sesi
-- `assets/sounds/alarm.wav`: yasaklı eşya, kara liste veya diğer riskli sonuç sesi
-
-Kendi seslerinizi kullanmak isterseniz aynı klasördeki dosyaları aynı isimlerle değiştirebilirsiniz. Ses dosyaları bulunamazsa program Windows üzerinde basit bip sesiyle yedekli çalışır.
-
-## Notlar
-
-- `__pycache__` klasörü teslim paketine eklenmemiştir.
-- `winsound` bağımlılığı güvenli hale getirilmiştir. Windows dışındaki sistemlerde program hata vermeden çalışır.
-- Raporlar `reports/` klasörüne kaydedilir.
-- X-ray animasyonu dışarıdan görsel dosyası kullanmaz; tamamen Tkinter Canvas ile çizilir.
-- Önceki sürümde tam ekranda sabit koordinatlar nedeniyle X-ray görüntüsü orantısız kalabiliyordu; bu sürümde canvas genişliğine göre yeniden çizim yapılır.
-- Önceki sürümde pencere küçültülünce paneller sıkışabiliyordu; bu sürümde minimum içerik genişliği ve otomatik kaydırma sistemi eklendi.
-
-## EXE oluşturma
+## 📦 EXE Oluşturma
 
 Windows üzerinde en kolay yöntem:
 
-1. Bu klasördeki `build_exe.bat` dosyasına çift tıklayın.
-2. İşlem tamamlanınca EXE dosyası şu konumda oluşur:
+1. Proje klasöründeki `build_exe.bat` dosyasına çift tıklayın.
+2. İşlem tamamlandığında EXE dosyası şu konumda oluşur:
 
 ```text
 dist\BagajGuvenlikSimulatoru.exe
 ```
 
-Bu script PyInstaller kurulu değilse otomatik kurar, eski build klasörlerini temizler, ikon ve ses dosyalarını EXE içine dahil eder.
-
-Program açılmazsa `build_exe_debug.bat` dosyasını çalıştırın. Bu sürüm konsol penceresiyle açıldığı için hata mesajı görülebilir.
-
-Manuel final komut:
+Manuel EXE oluşturmak için:
 
 ```bat
 python -m PyInstaller --noconfirm --clean --onefile --windowed --name "BagajGuvenlikSimulatoru" --icon "assets\icon.ico" --add-data "assets;assets" --add-data "reports;reports" main.py
 ```
 
+Program açılmazsa hata mesajını görmek için `build_exe_debug.bat` dosyası kullanılabilir.
+
+---
+
+## 📝 Raporlama
+
+Simülasyon sonunda uygulama içinde gün sonu raporu görüntülenebilir.
+
+Raporda şu bilgiler yer alır:
+
+* İşlenen yolcu sayısı
+* Kuyrukta bekleyen yolcu sayısı
+* Alarm/yasaklı eşya sayısı
+* Engellenen yolcu sayısı
+* Temiz geçiş sayısı
+* Kara liste kayıt sayısı
+* Toplam bagaj/eşya sayısı
+* Temiz geçiş oranı
+* Alarm oranı
+
+İstenirse rapor TXT dosyası olarak da kaydedilebilir.
+
+---
+
+## ⚙️ Teknik Notlar
+
+* Arayüz Python Tkinter ile geliştirilmiştir.
+* X-ray animasyonu Tkinter Canvas ile çizilmiştir.
+* Harici görsel dosyasına ihtiyaç duymadan dedektör, konveyör bant ve bagaj animasyonu oluşturulur.
+* `winsound` bağımlılığı güvenli hale getirilmiştir.
+* Windows dışındaki sistemlerde ses sistemi hata vermeden devre dışı kalabilir.
+* `__pycache__`, `build`, `dist` ve `.spec` dosyaları GitHub deposuna eklenmemelidir.
+
+---
+
+## 👨‍💻 Geliştirici
+
+**Gürel Bilgin**
+
+GitHub: `GurelBilgin`
